@@ -83,6 +83,7 @@ function retrieve_parent_element(elem) {
 $(document).ready(function(){
 
        $('div').mouseenter(function() {
+
                var currentTime = new Date();
                var currentId = $(this).attr("id");
                parent = retrieve_parent_element($(this));
@@ -112,17 +113,17 @@ $(document).ready(function(){
 
        });
        
-       $().mousemove(function(e){
-               //console.log('('+ e.pageX+','+ e.pageY+')');
+       $('body').mousemove(function(e){
+               console.log('('+ e.pageX+','+ e.pageY+')');
                coordinates['x'+x] = e.pageX;
                coordinates['y'+x] = e.pageY;
                x++;
                $('#document').html('e.pageX = ' + e.pageX + ', e.pageY = ' + e.pageY);
        });
 
-       //$("#document").click(function() {
+       $("#document").click(function() {
        //Uncomment this line for debug purposes, this will send the post form without leaving the page
-       $(window).unload(function() {
+       //$(window).unload(function() {
 			   endTime = new Date();
 			   delta_time = endTime.getTime() - startTime.getTime();
                add_postform(divs,coordinates, delta_time, server);
